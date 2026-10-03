@@ -62,8 +62,11 @@ function isCovered(item, haveList, assumeBasics) {
 }
 
 function getMissing(meal, haveList, assumeBasics) {
-  const source = Array.isArray(meal.missing) ? meal.missing : meal.ingredients ?? [];
-  return source.filter((item) => !isCovered(item, haveList, assumeBasics));
+  const source = meal.ingredients ?? [];
+
+  return source.filter(
+    (item) => !isCovered(item, haveList, assumeBasics)
+  );
 }
 
 /* ---------- small building blocks ---------- */
